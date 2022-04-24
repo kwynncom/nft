@@ -1,53 +1,43 @@
-// OpenSea's original other than this line
 // SPDX-License-Identifier: MIT
+// HardHat prefers the license ID above
+
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
-import "@openzeppelin/contracts/security/PullPayment.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
 
-contract NFT is ERC721, PullPayment, Ownable {
-  using Counters for Counters.Counter;
+contract NFT is ERC721 {
+    using Counters for Counters.Counter;
+    Counters.Counter private currentTokenId;
 
-  // Constants
-  uint256 public constant TOTAL_SUPPLY = 10_000;
-  uint256 public constant MINT_PRICE = 0.08 ether;
+    mapping(address => bool) private whitelist20;
+    uint256 public constant TOTAL_SUPPLY = 2222_000;
+    uint256 public constant MINT_PRICE = 0.08 ether;
 
-  Counters.Counter private currentTokenId;
+    
+ 
+    constructor() ERC721("NFTTutorial", "NFT") {
+//        whitelist20[0xFABB0ac9d68B0B445fB7357272Ff202C5651694a] = true;
+     }
 
-  /// @dev Base token URI used as a prefix by tokenURI().
-  string public baseTokenURI;
+    function mintToMsgSender()
+        public
+        payable
+        returns (uint256)
+    {
+         uint256 tokenId = currentTokenId.current();
+        require(tokenId < TOTAL_SUPPLY, "Max supply reached");
+	require(msg.value == MINT_PRICE, "Transaction value did not equal the mint price");
+	
+	address recipient = msg.sender;
+	
+//         require(whitelist20[recipient], "trying to mint free when not on whitelist, 23:30");
 
-  constructor() ERC721("NFTTutorial", "NFT") {
-    baseTokenURI = "";
-  }
+        currentTokenId.increment();
 
-  function mintTo(address recipient) public payable returns (uint256) {
-    uint256 tokenId = currentTokenId.current();
-    require(tokenId < TOTAL_SUPPLY, "Max supply reached");
-    require(msg.value == MINT_PRICE, "Transaction value did not equal the mint price");
-
-    currentTokenId.increment();
-    uint256 newItemId = currentTokenId.current();
-    _safeMint(recipient, newItemId);
-    return newItemId;
-  }
-
-  /// @dev Returns an URI for a given token ID
-  function _baseURI() internal view virtual override returns (string memory) {
-    return baseTokenURI;
-  }
-
-  /// @dev Sets the base token URI prefix.
-  function setBaseTokenURI(string memory _baseTokenURI) public onlyOwner {
-    baseTokenURI = _baseTokenURI;
-  }
-
-  /// @dev Overridden in order to make it an onlyOwner function
-  function withdrawPayments(address payable payee) public override onlyOwner virtual {
-      super.withdrawPayments(payee);
-  }
+        uint256 newItemId = currentTokenId.current();
+        _safeMint(recipient, newItemId);
+        return newItemId;
+    }
 }
-

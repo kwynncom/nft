@@ -10,7 +10,7 @@ require('hardhat-abi-exporter');
 const { ALCHEMY_KEY, ACCOUNT_PRIVATE_KEY, ETHERSCAN_API_KEY } = process.env;
 
 module.exports = {
-   solidity: "0.8.13", // Kwynn later version
+   solidity: "0.8.9", // Kwynn later version
    defaultNetwork: "rinkeby",
    networks: {
     hardhat: {},

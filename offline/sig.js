@@ -7,7 +7,7 @@ abilo.encodeFunctionSignature(
 
     {
       "inputs": [],
-      "name": "freeMint",
+      "name": "whitelistMint",
       "outputs": [
         {
           "internalType": "uint256",

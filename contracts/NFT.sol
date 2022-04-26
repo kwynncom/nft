@@ -17,6 +17,8 @@ contract NFT is ERC721, PullPayment, Ownable {
     uint256 public constant TOTAL_SUPPLY = 2222_000;
     uint256 public constant MINT_PRICE = 0.08 ether;
     enum mintTypeEnum {free, whitelist, publicMint }
+    uint64 public constant whitelistStart  = 1651017400;
+    uint64 public constant publicStart  = 1651017400 + 86400;
 
     constructor() ERC721("NFTTutorial", "NFT") {
         setFreelist();
@@ -48,7 +50,8 @@ contract NFT is ERC721, PullPayment, Ownable {
     payable
     returns (uint256)
     {
- 	require(whitelistV[msg.sender] >= 1, "The message sender is either not in the free list or has already used the free mint");
+    	require(block.timestamp >= whitelistStart, "whitelist sale has not started yet");
+ 	require(whitelistV[msg.sender] >= 1, "The message sender is either not in the whitelist or has already used whitelist quota");
     	return preApprovedMint(mintTypeEnum.whitelist);	 
     }
 

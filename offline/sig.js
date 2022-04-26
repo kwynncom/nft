@@ -2,15 +2,23 @@
 const abilo = require('web3-eth-abi');
 
 console.log(
-abilo.encodeFunctionSignature({
-    name: 'myMethod',
-    type: 'function',
-    inputs: [{
-        type: 'uint256',
-        name: 'myNumber'
-    },{
-        type: 'string',
-        name: 'myString'
-    }]
-})
+abilo.encodeFunctionSignature(
+
+
+    {
+      "inputs": [],
+      "name": "freeMint",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+
+
+)
 );

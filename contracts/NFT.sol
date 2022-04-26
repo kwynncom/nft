@@ -27,6 +27,7 @@ contract NFT is ERC721, PullPayment, Ownable {
 
     function freeMint() 
     public 
+    payable
     returns (uint256)
     {
     	require(freelist20[msg.sender] >= 1, "The message sender is either not in the free list or has already used the free mint");
@@ -50,6 +51,7 @@ contract NFT is ERC721, PullPayment, Ownable {
 
     function preApprovedMint(mintTypeEnum mintTyIn)
         private
+        payable
         returns (uint256)
     {
         uint256 tokenId = currentTokenId.current();

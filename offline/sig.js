@@ -19,6 +19,5 @@ abilo.encodeFunctionSignature(
       "type": "function"
     }
 
-
 )
 );

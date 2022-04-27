@@ -14,7 +14,7 @@ contract NFT is ERC721, PullPayment, Ownable {
 
     mapping(address => uint8) private freelistV;
     mapping(address => uint8) private whitelistV;
-    uint256 public constant TOTAL_SUPPLY = 2222_000;
+    uint256 public constant TOTAL_SUPPLY = 2222; // Yikes!  That was 2,222,000 in the previous version
     uint256 public constant MINT_PRICE = 0.08 ether;
     enum mintTypeEnum {free, whitelist, publicMint }
     uint64 public constant whitelistStart  = 1651017400;
@@ -51,6 +51,8 @@ contract NFT is ERC721, PullPayment, Ownable {
     returns (uint256)
     {
     	require(block.timestamp >= whitelistStart, "whitelist sale has not started yet");
+    	// testing negative numbers for an unsigned int
+    	// the answer is the VM "panics" and reports underflow, so unsigned is the right answer
  	require(whitelistV[msg.sender] >= 1, "The message sender is either not in the whitelist or has already used whitelist quota");
     	return preApprovedMint(mintTypeEnum.whitelist);	 
     }

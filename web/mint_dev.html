@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'    />
+<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+
+<title>NFT mint 2 button, improved</title>
+
+<script src='/opt/js/web3/web3.min.js'></script>
+<script>
+    
+class nftMintWeb2BtnCl {
+
+config() { // CONFIG HERE ******************
+    this.configv = { 
+        contract_address   : '0x5FbDB2315678afecb367f032d93F642f64180aa3', // must be "to" upon final call
+        whitelistMint_sig  : '0x804f43cd', // must be "data"
+        mintPrice          : '0x11c37937e080000', // 0x11c37937e080000 === 0.08 ETH in hex Wei ; must be "value"
+    }; // CONFIG HERE ********************        
+}
+
+constructor() { this.config(); }
+
+async connect() { 
+    this.showConnResult('beforeConn');
+    await ethereum.request({ method: 'eth_requestAccounts' }); 
+    this.showConnResult();
+}
+
+showConnResult(state) {
+    
+    const e = document.getElementById('connrese');
+            
+    if (state === 'beforeConn') { e.innerHTML = '&nbsp;'; return; }
+     
+    if (ethereum.selectedAddress) 
+         e.innerHTML = 'connected';
+    else e.innerHTML = 'NOT connected';
+    
+}
+
+async mint(mintType, freeMint) {
+
+    this.showConnResult('beforeConn');
+    if (!ethereum.selectedAddress) await this.connect();
+    this.showConnResult();
+
+    const custAddr = ethereum.selectedAddress;
+    const rargs = {};
+    rargs.to = this.configv['contract_address'];
+    rargs.from = rargs.recipient = custAddr;
+    if (freeMint !== true) rargs.value = this.configv['mintPrice'];
+    rargs.data = this.configv[mintType + '_sig'];
+
+    ethereum.request({
+      method: 'eth_sendTransaction',
+      params: [rargs],
+    }).then((txHash) => console.log(txHash))
+      .catch((error) => console.error);
+} // func mint
+} // class NFT
+
+var myMintObj = new nftMintWeb2BtnCl();
+
+window.addEventListener('DOMContentLoaded', () => { 
+    myMintObj.showConnResult(); 
+    ethereum.on('accountsChanged', (accounts) => {  myMintObj.showConnResult(); });
+});
+
+</script>
+</head>
+<body>
+<div>
+    <div style='margin-bottom: 2ex; margin-top: 1.5ex; '>
+        <div style='margin-bottom: 1.5ex;'><button onclick='myMintObj.connect();' style='font-size: 120%;'>Connect to MetaMask.</button></div>
+        <div style='margin-bottom: 2.0ex; ' id='connrese'>&nbsp;</div>
+        <div><button onclick='myMintObj.mint("whitelistMint", false);'    style='font-size: 120%;'>whitelist mint</button></div>
+    </div>
+</div>
+
+<p><a href='ether.html'>My main doc page</a> and the other versions.
+    <span style='padding-left: 3ex;'><a href='https://github.com/kwynncom/ether-web'>GitHub repo with this code</a></span>
+</p>
+    </div>
+</body>
+</html>

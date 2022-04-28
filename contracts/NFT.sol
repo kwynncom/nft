@@ -6,6 +6,8 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/security/PullPayment.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "./lists.sol";
+
 
 contract NFT is ERC721, PullPayment, Ownable {
     using Counters for Counters.Counter;
@@ -13,8 +15,8 @@ contract NFT is ERC721, PullPayment, Ownable {
     function withdrawPayments(address payable payee) public override onlyOwner virtual { super.withdrawPayments(payee); }    
 
     mapping(address => uint8) private freelistV;
-    mapping(address => uint8) private whitelistV;
-    uint256 public constant TOTAL_SUPPLY = 2222; // Yikes!  That was 2,222,000 in the previous version
+     mapping(address => uint8) private whitelistV;
+    uint256 public constant TOTAL_SUPPLY = 2222;
     uint256 public constant MINT_PRICE = 0.08 ether;
     enum mintTypeEnum {free, whitelist, publicMint }
     uint64 public constant whitelistStart  = 1651017400;
@@ -23,6 +25,7 @@ contract NFT is ERC721, PullPayment, Ownable {
     constructor() ERC721("NFTTutorial", "NFT") {
         setFreelist();
         setWhitelist();
+      //  const myl = require("lists.sol");
      }
 
     function setFreelist() private {

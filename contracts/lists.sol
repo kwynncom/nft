@@ -14,7 +14,7 @@ contract whitelist is myNFTConfig {
 	whitelistV[0xdF3e18d64BC6A983f673Ab319CCaE4f1a57C7097] = 2;	
     }
 
-    function decWhite(address a) private { whitelistV[a]--; }
+    function decWhite(address a) public { whitelistV[a]--; }
     
     function whitelistCanMintOrDie(address a, uint256 msgValue) public view {
 	require(msgValue == MINT_PRICE, "Transaction value did not equal the mint price");

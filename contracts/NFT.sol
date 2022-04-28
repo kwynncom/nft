@@ -51,7 +51,6 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
     }
 
 	function decFree(address a) private  { 	freelistV[a]--; }
-	function decWhite(address a) private { whitelistV[a]--; }
 
     function whitelistMint()
     public
@@ -89,7 +88,7 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
         
         _safeMint(sendTo, newItemId);
         if      (mintTyIn == mintTypeEnum.free)      decFree (sendTo);
-        else if (mintTyIn == mintTypeEnum.whitelist) decWhite(sendTo);
+        else if (mintTyIn == mintTypeEnum.whitelist) wlv.decWhite(sendTo);
 
         return newItemId;
     }

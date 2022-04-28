@@ -21,8 +21,14 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
     enum mintTypeEnum {free, whitelist, publicMint }
     uint64 public constant whitelistStart  = 1651017400;
     uint64 public constant publicStart  = 1651017400 + 86400;
+    
+    whitelist private wlv;
+    
 
     constructor() ERC721("NFTTutorial", "NFT") {
+    
+   	wlv = new whitelist();
+    
         setFreelist();
         setWhitelist();
      }
@@ -52,10 +58,12 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
     payable
     returns (uint256)
     {
+	wlv.whitelistCanMintOrDie(msg.sender, msg.value);
+    
     	require(block.timestamp >= whitelistStart, "whitelist sale has not started yet");
     	// testing negative numbers for an unsigned int
     	// the answer is the VM "panics" and reports underflow, so unsigned is the right answer
- 	require(whitelistV[msg.sender] >= 1, "The message sender is either not in the whitelist or has already used whitelist quota");
+// 	require(whitelistV[msg.sender] >= 1, "The message sender is either not in the whitelist or has already used whitelist quota");
     	return preApprovedMint(mintTypeEnum.whitelist);	 
     }
 

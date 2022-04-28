@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/security/PullPayment.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./lists.sol";
+import "./list.sol";
 import "./config.sol";
 
 
@@ -22,12 +22,12 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
     uint64 public constant whitelistStart  = 1651017400;
     uint64 public constant publicStart  = 1651017400 + 86400;
     
-    whitelist private wlv;
+    mylist private wlv;
     
 
     constructor() ERC721("NFTTutorial", "NFT") {
     
-   	wlv = new whitelist();
+   	wlv = new mylist();
     
         setFreelist();
         setWhitelist();
@@ -50,18 +50,15 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
     	return preApprovedMint(mintTypeEnum.free);
     }
 
-	function decFree(address a) private  { 	freelistV[a]--; }
 
     function whitelistMint()
     public
     payable
     returns (uint256)
     {
-	wlv.whitelistCanMintOrDie(msg.sender, msg.value);
+	wlv.listCanMintOrDie(msg.sender, msg.value);
     
     	require(block.timestamp >= whitelistStart, "whitelist sale has not started yet");
-    	// testing negative numbers for an unsigned int
-    	// the answer is the VM "panics" and reports underflow, so unsigned is the right answer
 // 	require(whitelistV[msg.sender] >= 1, "The message sender is either not in the whitelist or has already used whitelist quota");
     	return preApprovedMint(mintTypeEnum.whitelist);	 
     }
@@ -87,8 +84,8 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
         address sendTo = msg.sender;
         
         _safeMint(sendTo, newItemId);
-        if      (mintTyIn == mintTypeEnum.free)      decFree (sendTo);
-        else if (mintTyIn == mintTypeEnum.whitelist) wlv.decWhite(sendTo);
+//        if      (mintTyIn == mintTypeEnum.free)      decFree (sendTo);
+        if (mintTyIn == mintTypeEnum.whitelist) wlv.decrement(sendTo);
 
         return newItemId;
     }

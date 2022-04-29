@@ -22,14 +22,15 @@ echo(count($out) . ' addresses after uniqueness check' . "\n");
 
 $l = '';
 foreach($out as $addr => $ignore) {
-	$l .= '	thelistv[' . $addr . '] = ' . WHITELIST_ALLOWED_MINTS . ';' . "\n";
+	$l .= "\t\t" . 'thelistv[' . $addr . '] = ' . WHITELIST_ALLOWED_MINTS . ';' . "\n";
 }
 
-$needle = '// NFT-WHITELIST-AUTOGEN-GOES-BELOW' . "\n";
+$needle = 'NFT-WHITELIST-AUTOGEN-GOES-BELOW';
 
 $p = __DIR__ . '/../contracts/whitelist.sol';
 $f = file_get_contents($p);
-$f = str_replace($needle, $needle . $l, $f);
+$f = preg_replace('/' . $needle . '[^\}]*/', $needle .  "\n\t", $f);
+$f = preg_replace('/' . $needle . '/', $needle . "\n\n" . $l . "\t", $f);
 file_put_contents($p, $f);
 
 echo($f);

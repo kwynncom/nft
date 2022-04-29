@@ -1,3 +1,8 @@
+2:41
+
+Conclusion: IPFS is still "pinning" the metadata.  It seems that retrieving it via IPFS rather than the web might require pinning.
+
+
 4/29 01:21
 
 my precise func name: tokenURI
@@ -33,7 +38,19 @@ https://etherscan.io/contractsVerified?filter=opensourcelicense
 
 
 ipfs://bafybeid6dp7rbskcx6fnlfeeuuf37ujwayffyvhhk7nzbpcfypig3pwrbq/images/1.png
+ipfs://bafybeid6dp7rbskcx6fnlfeeuuf37ujwayffyvhhk7nzbpcfypig3pwrbq/images/1.png
 ********
 queued: Fri Apr 29 01:54:32 AM EDT 2022
+
+***********
+2022/04/29 00:56
+
+keep the metadata at 
+name
+description
+image
+
+For example, this works:
+https://ipfs.io/ipfs/bafybeiezeds576kygarlq672cnjtimbsrspx5b3tr3gct2lhqud6abjgiu
 
 

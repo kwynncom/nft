@@ -8,13 +8,17 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
     /* counters stuff */ using Counters for Counters.Counter; Counters.Counter private currentTokenId;
 
     function withdrawPayments(address payable payee) public override onlyOwner virtual { super.withdrawPayments(payee); }    
-    
+    function setBaseTokenURI(string memory _baseTokenURI) public     onlyOwner { baseTokenURI = _baseTokenURI;  }
+    string public baseTokenURI;
+   
     whitelist whitelv;
     freelist freelv;
         
     constructor() ERC721("NFTTutorial", "NFT") {
      	whitelv = new whitelist();   	
-   	freelv  = new freelist();
+   		freelv  = new freelist();
+   		
+        baseTokenURI = "";
     }
     function freeMint() public returns (uint256)  {
    	address addr = msg.sender;
@@ -47,4 +51,6 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
         _safeMint(addr, newItemId);
         return newItemId;
     }
+    
+	function _baseURI() internal view virtual override returns (string memory) { return baseTokenURI;  }    
 }

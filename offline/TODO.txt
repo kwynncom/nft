@@ -1,0 +1,11 @@
+2022/04/29 00:56
+
+keep the metadata at 
+name
+description
+image
+
+For example, this works:
+https://ipfs.io/ipfs/bafybeiezeds576kygarlq672cnjtimbsrspx5b3tr3gct2lhqud6abjgiu
+
+

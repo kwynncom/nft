@@ -4,6 +4,8 @@ require_once('/opt/kwynn/kwutils.php');
 
 $fs = glob('rawimages/*');
 
+$URI = 'https://bafybeid6dp7rbskcx6fnlfeeuuf37ujwayffyvhhk7nzbpcfypig3pwrbq.ipfs.nftstorage.link/images/';
+
 $cnt1 = count($fs);
 
 $info = [];
@@ -19,7 +21,9 @@ foreach($fs as $f) {
 	$nn = $t['filename'] = ((string)($i)) . '.' . strtolower($t['extension']); unset($t['extension']);
 	$i++;
 	save_md($t);
-	copy($f, __DIR__ . '/../md/images' . '/' . $nn);
+	$newPath = __DIR__ . '/../md/images' . '/' . $nn;
+	if (!file_exists($newPath)) kwas(copy($f, $newPath), 'copy failed');
+	else kwas($h === hash_file('sha512', $newPath));
 	$info[] = $t;
 	continue;
 }
@@ -30,14 +34,19 @@ echo(count($hashes) . ' unique files' . "\n");
 exit(0);
 
 function save_md($a) {
+	
+	global $URI;
+	
 	$f =  $a['filename'];
 	$seq = $a['seq'];
 	$a['originalFileName'] = $a['basename'];
+	if ($URI) $a['image'] = $URI . $f; 
 	
-	$keep = ['originalFileName', 'filename', 'sha512'];
+	$keep = ['originalFileName', 'filename', 'sha512', 'image'];
 	foreach($a as $key => $ignore) if (!in_array($key, $keep)) unset($a[$key]);
 
-	file_put_contents(__DIR__ . '/../md/metadata/' . $seq, json_encode($a, JSON_PRETTY_PRINT));
+	$newfn = __DIR__ . '/../md/metadata/' . $seq;
+	file_put_contents($newfn, json_encode($a, JSON_PRETTY_PRINT |  JSON_UNESCAPED_SLASHES));
 	
 }
 

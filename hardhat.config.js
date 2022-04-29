@@ -6,6 +6,7 @@ require('dotenv').config({path : '/var/kwynn/envnft'}); // Kwynn path
 require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-etherscan");
 require('hardhat-abi-exporter');
+require("./scripts/setURI.js");
 
 const { ALCHEMY_KEY, ACCOUNT_PRIVATE_KEY, ETHERSCAN_API_KEY } = process.env;
 

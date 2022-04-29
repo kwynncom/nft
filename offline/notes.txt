@@ -1,0 +1,7 @@
+Thu 4/28 23:35
+
+Contract deployed to address: 0x06257EfED298FBB58F56bf775ea8e2FBb7145F8C
+https://bafybeid6dp7rbskcx6fnlfeeuuf37ujwayffyvhhk7nzbpcfypig3pwrbq.ipfs.nftstorage.link/images
+
+
+npx hardhat set-base-token-uri --base-url "https://bafybeibrkwtb4anorjyeo44veutb6inz25pvetcned3s3ckrhawy4n5ley.ipfs.nftstorage.link/metadata/"

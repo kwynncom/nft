@@ -4,6 +4,9 @@ import "./config.sol"; import "./whitelist.sol"; import "./freelist.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol" ; import "@openzeppelin/contracts/utils/Counters.sol"; 
 import "@openzeppelin/contracts/security/PullPayment.sol"; import "@openzeppelin/contracts/access/Ownable.sol";
 
+// TEMPORARY ONLY BASE URI!!! ******
+// *********************************************** !!!!!!!!!!!!!!!!!!!!!!
+
 contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
     /* counters stuff */ using Counters for Counters.Counter; Counters.Counter private currentTokenId;
 
@@ -18,7 +21,7 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
      	whitelv = new whitelist();   	
    		freelv  = new freelist();
    		
-        baseTokenURI = "";
+        baseTokenURI = "https://ipfs.io/ipfs/bafybeibpi2qnkg7ppumvxghcjxgn6im4i7wenj4ypk7mizstms5v264q6y/metadata/";
     }
     function freeMint() public returns (uint256)  {
    	address addr = msg.sender;

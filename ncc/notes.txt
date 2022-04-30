@@ -1,0 +1,116 @@
+npx hardhat set-base-token-uri --base-url  https://ipfs.io/ipfs/bafybeiaq3jykrkcl7voubbktccmzn3e5n7bydlkrc6kmqjaidk522c3c2m/metadata/
+**************
+https://ipfs.io/ipfs/bafybeiaq3jykrkcl7voubbktccmzn3e5n7bydlkrc6kmqjaidk522c3c2m/metadata/
+
+https://bafybeiaq3jykrkcl7voubbktccmzn3e5n7bydlkrc6kmqjaidk522c3c2m.ipfs.nftstorage.link/metadata/1
+
+
+**********
+RewriteEngine On
+RewriteRule (.*) server.php?tokenId=($1) [R=302,L]
+
+*********
+20:49
+
+https://ipfs.io/ipfs/bafybeiezeds576kygarlq672cnjtimbsrspx5b3tr3gct2lhqud6abjgiu
+https://ipfs.io/ipfs/bafybeiezeds576kygarlq672cnjtimbsrspx5b3tr3gct2lhqud6abjgiu
+https://ipfs.io/ipfs/bafybeiezeds576kygarlq672cnjtimbsrspx5b3tr3gct2lhqud6abjgiu
+https://ipfs.io/ipfs/bafybeiezeds576kygarlq672cnjtimbsrspx5b3tr3gct2lhqud6abjgiu
+
+
+***********
+npx hardhat set-base-token-uri --base-url  ipfs://bafybeiaq3jykrkcl7voubbktccmzn3e5n7bydlkrc6kmqjaidk522c3c2m/metadata/
+*************
+20:09
+
+If you use IPFS to host your metadata, your URL should be in the format ipfs://<hash>. For example, ipfs://QmTy8w65yBXgyfG2ZBg5TrfB2hPjrDQH3RCQFJGkARStJb.
+https://docs.opensea.io/docs/metadata-standards
+***********
+20:00
+
+https://testnets-api.opensea.io/asset/0x1C7993dB4f66D07B108c101648409a6310deaBc2/1/validate/ 
+*********
+19:51
+
+https://ipfs.io/ipfs/bafybeibpi2qnkg7ppumvxghcjxgn6im4i7wenj4ypk7mizstms5v264q6y/metadata/
+https://bafybeibpi2qnkg7ppumvxghcjxgn6im4i7wenj4ypk7mizstms5v264q6y.ipfs.nftstorage.link/metadata
+**********
+							  https://ipfs.io/ipfs/
+npx hardhat set-base-token-uri --base-url  https://bafybeihojd63rc4jzygpjascunxeorijx2pypo7nbaxhknkcqg4x6lxzaq.ipfs.nftstorage.link/metadata/
+***********
+19:25
+
+npx hardhat set-base-token-uri --base-url https://ipfs.io/ipfs/bafybeigktifmq5g2cscxayskzq4sw7r52nvox3nyemiuzvhfjghrcd3wfi/metadata/
+
+*****
+19:08
+
+npx hardhat set-base-token-uri --base-url https://bafybeiaq3jykrkcl7voubbktccmzn3e5n7bydlkrc6kmqjaidk522c3c2m.ipfs.nftstorage.link/metadata/
+https://testnets-api.opensea.io/asset/0x9DD92B222114605A5B00D5AE5a847856249Bc4c7/1/validate/ 
+
+*********
+
+18:50
+
+MAKE SURE TO INCLUDE FINAL /
+npx hardhat set-base-token-uri --base-url ipfs://bafybeiaq3jykrkcl7voubbktccmzn3e5n7bydlkrc6kmqjaidk522c3c2m/metadata/
+
+2:41
+
+Conclusion: IPFS is still "pinning" the metadata.  It seems that retrieving it via IPFS rather than the web might require pinning.
+
+
+4/29 01:21
+
+my precise func name: tokenURI
+
+**********
+Thu 4/28 23:35
+
+Contract deployed to address: 0x06257EfED298FBB58F56bf775ea8e2FBb7145F8C
+https://bafybeid6dp7rbskcx6fnlfeeuuf37ujwayffyvhhk7nzbpcfypig3pwrbq.ipfs.nftstorage.link/images
+
+
+npx hardhat set-base-token-uri --base-url "https://bafybeiaq3jykrkcl7voubbktccmzn3e5n7bydlkrc6kmqjaidk522c3c2m.ipfs.nftstorage.link/metadata/"
+
+https://testnets-api.opensea.io/api/v1/asset/0x06257EfED298FBB58F56bf775ea8e2FBb7145F8C/1/?force_update=true
+https://testnets-api.opensea.io/api/v1/asset/0x06257EfED298FBB58F56bf775ea8e2FBb7145F8C/2/?force_update=true
+https://testnets-api.opensea.io/asset/0x06257EfED298FBB58F56bf775ea8e2FBb7145F8C/1/validate/ 
+https://testnets-api.opensea.io/asset/0x06257EfED298FBB58F56bf775ea8e2FBb7145F8C/2/validate/ 
+
+npx hardhat verify 0x06257EfED298FBB58F56bf775ea8e2FBb7145F8C
+
+https://testnets.opensea.io/assets/0x06257EfED298FBB58F56bf775ea8e2FBb7145F8C/1?force_update=true
+
+
+https://testnets.opensea.io/assets/0x06257efed298fbb58f56bf775ea8e2fbb7145f8c/1/
+
+*********
+https://ipfs.io/ipfs/bafybeiezeds576kygarlq672cnjtimbsrspx5b3tr3gct2lhqud6abjgiu
+https://testnets.opensea.io/collection/multifaucet-nft-q55yxxitoz
+***********
+https://etherscan.io/address/0x546504d719d8c9b8a6633a86f318dd45022558d2#readContract
+
+An IPFS URI
+
+https://etherscan.io/contractsVerified?filter=opensourcelicense
+
+
+ipfs://bafybeid6dp7rbskcx6fnlfeeuuf37ujwayffyvhhk7nzbpcfypig3pwrbq/images/1.png
+ipfs://bafybeid6dp7rbskcx6fnlfeeuuf37ujwayffyvhhk7nzbpcfypig3pwrbq/images/1.png
+********
+queued: Fri Apr 29 01:54:32 AM EDT 2022
+
+***********
+2022/04/29 00:56
+
+keep the metadata at 
+name
+description
+image
+
+For example, this works:
+https://ipfs.io/ipfs/bafybeiezeds576kygarlq672cnjtimbsrspx5b3tr3gct2lhqud6abjgiu
+***********
+https://ipfs.io/ipfs/bafybeid6dp7rbskcx6fnlfeeuuf37ujwayffyvhhk7nzbpcfypig3pwrbq/images/1.png
+

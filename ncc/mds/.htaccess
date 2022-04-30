@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule (\d+)$ /t/22/04/eth/mds/server.php?tokenId=$1 [R=302,L]

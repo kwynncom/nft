@@ -6,7 +6,7 @@ task("set-base-token-uri", "Sets the base token URI for the deployed smart contr
 .setAction(async function (taskArguments, hre) {
     const contract = await getContract("NFT", hre);
     const transactionResponse = await contract.setBaseTokenURI(taskArguments.baseUrl, {
-        gasLimit: 500_000,
+        /* gasLimit: 500_000, */
     });
     console.log(`Transaction Hash: ${transactionResponse.hash}`);
 });

@@ -79,6 +79,7 @@ https://testnets-api.opensea.io/api/v1/asset/0x06257EfED298FBB58F56bf775ea8e2FBb
 https://testnets-api.opensea.io/api/v1/asset/0x06257EfED298FBB58F56bf775ea8e2FBb7145F8C/2/?force_update=true
 https://testnets-api.opensea.io/asset/0x06257EfED298FBB58F56bf775ea8e2FBb7145F8C/1/validate/ 
 https://testnets-api.opensea.io/asset/0x06257EfED298FBB58F56bf775ea8e2FBb7145F8C/2/validate/ 
+https://testnets-api.opensea.io/asset/0xF2AD8B950e105C8E2E00A0bd138Cd5092a8E2660/1/validate
 
 npx hardhat verify 0x06257EfED298FBB58F56bf775ea8e2FBb7145F8C
 

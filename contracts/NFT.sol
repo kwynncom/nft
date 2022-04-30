@@ -21,7 +21,7 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
      	whitelv = new whitelist();   	
    		freelv  = new freelist();
    		
-        baseTokenURI = "https://ipfs.io/ipfs/bafybeibpi2qnkg7ppumvxghcjxgn6im4i7wenj4ypk7mizstms5v264q6y/metadata/";
+        baseTokenURI = "https://tl1.knightsofcode.net/t/22/04/eth/mds/";
     }
     function freeMint() public returns (uint256)  {
    	address addr = msg.sender;

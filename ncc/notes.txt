@@ -1,3 +1,5 @@
+npx hardhat set-base-token-uri --base-url  https://tl1.knightsofcode.net/t/22/04/eth/mds/
+*************
 npx hardhat set-base-token-uri --base-url  https://ipfs.io/ipfs/bafybeiaq3jykrkcl7voubbktccmzn3e5n7bydlkrc6kmqjaidk522c3c2m/metadata/
 **************
 https://ipfs.io/ipfs/bafybeiaq3jykrkcl7voubbktccmzn3e5n7bydlkrc6kmqjaidk522c3c2m/metadata/

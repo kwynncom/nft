@@ -13,6 +13,9 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
     function withdrawPayments(address payable payee) public override onlyOwner virtual { super.withdrawPayments(payee); }    
     function setBaseTokenURI(string memory _baseTokenURI) public     onlyOwner { baseTokenURI = _baseTokenURI;  }
     string public baseTokenURI;
+    
+    uint256 public totalSupply; // EtherScan appears to expect this.  
+    	// See https://www.oreilly.com/library/view/mastering-blockchain-programming/9781839218262/b247a67a-f0a3-4e80-b897-1cd4372507ab.xhtml
    
     whitelist whitelv;
     freelist freelv;
@@ -48,7 +51,7 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
     }
     function preApprovedMint(address addr) private returns (uint256)    {
         uint256 tokenId = currentTokenId.current();
-        require(tokenId < totalSupply, "Max supply reached");
+        require(tokenId < MAX_SUPPLY, "Max supply reached");
         currentTokenId.increment();
         uint256 newItemId = currentTokenId.current();
         _safeMint(addr, newItemId);

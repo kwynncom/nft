@@ -1,0 +1,5 @@
+https://rinkeby.etherscan.io/address/0x9dd92b222114605a5b00d5ae5a847856249bc4c7#readContract
+ipfs://bafybeiaq3jykrkcl7voubbktccmzn3e5n7bydlkrc6kmqjaidk522c3c2m/metadata/1
+should work, but does not necessarily produce pretty enough JSON
+*********
+

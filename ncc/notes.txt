@@ -1,3 +1,7 @@
+show NFT metadata rinkeby
+The above shows many OpenSea problems over the past year or so, even though OpenSea is not in the search.  This is on Google
+Same with:  view rinkeby testnet metadata
+*******
 npx hardhat set-base-token-uri --base-url  https://tl1.knightsofcode.net/t/22/04/eth/mds/
 *************
 npx hardhat set-base-token-uri --base-url  https://ipfs.io/ipfs/bafybeiaq3jykrkcl7voubbktccmzn3e5n7bydlkrc6kmqjaidk522c3c2m/metadata/

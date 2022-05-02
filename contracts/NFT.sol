@@ -48,7 +48,7 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
     }
     function preApprovedMint(address addr) private returns (uint256)    {
         uint256 tokenId = currentTokenId.current();
-        require(tokenId < TOTAL_SUPPLY, "Max supply reached");
+        require(tokenId < totalSupply, "Max supply reached");
         currentTokenId.increment();
         uint256 newItemId = currentTokenId.current();
         _safeMint(addr, newItemId);

@@ -10,13 +10,12 @@ import "@openzeppelin/contracts/security/PullPayment.sol"; import "@openzeppelin
 contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
     /* counters stuff */ using Counters for Counters.Counter; Counters.Counter private currentTokenId;
 
+	uint256 public totalSupply;
+
     function withdrawPayments(address payable payee) public override onlyOwner virtual { super.withdrawPayments(payee); }    
     function setBaseTokenURI(string memory _baseTokenURI) public     onlyOwner { baseTokenURI = _baseTokenURI;  }
     string public baseTokenURI;
-    
-    uint256 public totalSupply; // EtherScan appears to expect this.  
-    	// See https://www.oreilly.com/library/view/mastering-blockchain-programming/9781839218262/b247a67a-f0a3-4e80-b897-1cd4372507ab.xhtml
-   
+
     whitelist whitelv;
     freelist freelv;
         
@@ -55,7 +54,8 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
         currentTokenId.increment();
         uint256 newItemId = currentTokenId.current();
         _safeMint(addr, newItemId);
-        return newItemId;
+        totalSupply =   newItemId; // only for purposes of satisfying EtherScan
+        return          newItemId;
     }
     
 	function _baseURI() internal view virtual override returns (string memory) { return baseTokenURI;  }    

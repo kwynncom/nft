@@ -4,13 +4,11 @@ import "./config.sol"; import "./whitelist.sol"; import "./freelist.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol" ; import "@openzeppelin/contracts/utils/Counters.sol"; 
 import "@openzeppelin/contracts/security/PullPayment.sol"; import "@openzeppelin/contracts/access/Ownable.sol";
 
-// TEMPORARY ONLY BASE URI!!! ******
-// *********************************************** !!!!!!!!!!!!!!!!!!!!!!
-
 contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
-    /* counters stuff */ using Counters for Counters.Counter; Counters.Counter private currentTokenId;
+    using Counters for Counters.Counter; Counters.Counter private currentTokenId;
 
 	uint256 public totalSupply;
+	uint256 public constant maxTotalSupply = MAX_SUPPLY;
 
     function withdrawPayments(address payable payee) public override onlyOwner virtual { super.withdrawPayments(payee); }    
     function setBaseTokenURI(string memory _baseTokenURI) public     onlyOwner { baseTokenURI = _baseTokenURI;  }
@@ -23,7 +21,7 @@ contract NFT is ERC721, PullPayment, Ownable, myNFTConfig {
      	whitelv = new whitelist();   	
    		freelv  = new freelist();
    		
-        baseTokenURI = "https://kwynn.com/t/22/04/eth/mds/"; // ***** !!!!!!!! *******
+        baseTokenURI = "";
     }
     function freeMint() public returns (uint256)  {
    	address addr = msg.sender;

@@ -4,7 +4,7 @@ require_once('/opt/kwynn/kwutils.php');
 
 $fs = glob('rawimages/*');
 
-$URI = 'https://bafybeid6dp7rbskcx6fnlfeeuuf37ujwayffyvhhk7nzbpcfypig3pwrbq.ipfs.nftstorage.link/images/';
+$URI = false;
 
 $cnt1 = count($fs);
 
@@ -27,6 +27,14 @@ foreach($fs as $f) {
 	$info[] = $t;
 	continue;
 }
+
+// cd ~/nft && npx ipfs-car --pack /tmp/i --output /tmp/test.car
+// cd ~/nft && npx ipfs-car --pack /tmp/i 
+// root CID: bafybeiausa5xpyncqe3bodo3v4jokoq26dxrckonsap7xtkpjrhhq64wbe
+// output: i.car
+// npx ipfs-car --list-roots /tmp/test.car
+// bafybeiausa5xpyncqe3bodo3v4jokoq26dxrckonsap7xtkpjrhhq64wbe
+
 
 kwas(count($fs) === count($hashes), 'not unique files!');
 echo(count($hashes) . ' unique files' . "\n");
